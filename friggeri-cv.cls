@@ -221,6 +221,8 @@ BoldItalicFont=\@cv@fontface-BoldItalic.ttf
 \newcommand{\sweeng}[2]{\ifthenelse{\equal{\swelanguage}{sv}}{#1}{#2}}
 \newcommand{\secsweeng}[2]{\ifthenelse{\equal{\swelanguage}{sv}}{\section{#1}}{\section{#2}}}
 
+#\newcommand{\testempty}[3]{\ifthenelse{\equal{#1}{}}{#2}{#3}}
+
 %%%%%%%%%%%%%%%%%%%%
 % List environment %
 %%%%%%%%%%%%%%%%%%%%
@@ -228,7 +230,7 @@ BoldItalicFont=\@cv@fontface-BoldItalic.ttf
 \newcommand{\tablewidth}{11.2cm}
 \setlength{\tabcolsep}{4pt}
 \newenvironment{entrylist}{%
-  \begin{longtable}{@{\extracolsep{\fill}}ll}
+  \begin{longtable}{@{\extracolsep{\fill}}rl}
 }{%
   \end{longtable}
 }
@@ -239,27 +241,36 @@ BoldItalicFont=\@cv@fontface-BoldItalic.ttf
     \textbf{#3}%
     \hfill%
     {\footnotesize\addfontfeature{Color=lightgray} #4}}\\%
-    \multicolumn{1}{p{2cm}}{#2} & \parbox{\tablewidth}{#5}\vspace{\parsep}%
+    \multicolumn{1}{p{2cm}}{#2} & \parbox{\tablewidth}{#5}\vspace{2.5\parsep}%
   \\}
   
   
 \newcommand{\jobentry}[6]{%
-  \multirowcell{2}{#1\\ #2}&\parbox[t]{\tablewidth}{%
+  \multirowcell{2}{{\centering \textbf{#1} }\\ {\centering #2}}&\parbox[t]{\tablewidth}{%
     \textbf{#3}%
     \hfill%
     {\footnotesize\addfontfeature{Color=lightgray}#4}}\\%
-    &\parbox{\tablewidth}{\emph{#5}\\#6}\vspace{\parsep}%
+    &\parbox{\tablewidth}{\emph{#5}\\#6}\vspace{2.5\parsep}%
   \\}
   
-\newcommand{\courseentry}[6]{%
-  #1&\parbox[t]{\tablewidth}{%
+\newcommand{\programmeentry}[6]{%
+  \textbf{#1} &\parbox[t]{\tablewidth}{%
     \textbf{#2}%
     \hfill%
     {\footnotesize\addfontfeature{Color=lightgray} #3}\\%
     #4\vspace{\parsep}}\\%
   \multicolumn{1}{r}{\footnotesize \sweeng{Uppsats}{Thesis}}&\parbox[t]{\tablewidth}{#5}\\%
   \multicolumn{1}{r}{\footnotesize \sweeng{Kurser}{Coursework}}&\parbox[t]{\tablewidth}{{\footnotesize#6}%
-  \vspace{\parsep}}\\}
+  \vspace{2.5\parsep}}\\}
+  
+  \newcommand{\courseentry}[5]{%
+  \textbf{#1} &\parbox[t]{\tablewidth}{%
+    \textbf{#2}%
+    \hfill%
+    {\footnotesize\addfontfeature{Color=lightgray} #3}\\%
+    #4}\\%
+  \multicolumn{1}{r}{\footnotesize \sweeng{}{}}&\parbox[t]{\tablewidth}{{\footnotesize#5}%
+  \vspace{2.5\parsep}}\\}
 
 %%%%%%%%%%%%%%
 % Side block %
