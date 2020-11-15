@@ -1,41 +1,83 @@
 \begin{aside} % In the aside, each new line forces a line break
+\vspace{2.7cm}
 \section{\sweeng{kontakt}{contact}}
-\href{https://www.google.com/maps/place/Lanhagsgatan+21,+603+64+Norrköping/}{Lanhagsgatan 21 \faMapMarker
+\href{https://www.google.com/maps/place/Lanhagsgatan+21,+603+64+Norrköping/}{Lanhagsgatan 21 \footnotesize \faMapMarker
 603 64 Norrköping
 \sweeng{Sverige}{Sweden}}
 ~
-\href{tel:+46721750990}{\sweeng{0721-750 990}{+46 721 750 990} \faPhone}
+\href{tel:+46721750990}{\sweeng{0721-750 990}{+46 721 750 990} \footnotesize \faPhone}
 ~
-\href{mailto:gustav.n.lundberg@outlook.com}{\sweeng{maila mig}{email me} \faEnvelope}
-\href{https://linkedin.com/in/gustav-n-lundberg}{\sweeng{hitta mig på}{find me on} LinkedIn \faLinkedin}
-\section{\sweeng{språk}{languages}}
+\href{mailto:gustav.n.lundberg@outlook.com}{\sweeng{maila mig}{email me}  \footnotesize \faEnvelope}
+\href{https://linkedin.com/in/gustav-n-lundberg}{\sweeng{hitta mig på}{find me on} LinkedIn  \footnotesize \faLinkedin}
+\section{\sweeng{språk}{languages}}\vspace{-\baselineskip}
 \begin{tabular}{r r}
-    \sweeng{svenska}{swedish}   &\score{5}
-    \sweeng{engelska}{english}  &\score{5}
-    \sweeng{tyska}{german}      &\score{3}
+    \sweeng{svenska}{swedish}               &\sweeng{modersmål}{native} 
+    \sweeng{engelska}{english}              & C2  
+    \multirow{2}{*}{\sweeng{tyska}{german}} & \sweeng{läsa/lyssna: B2}{read/listen: B2}
+                                            & \sweeng{skriva/tala: B1}{write/speak: B1}
 \end{tabular}%
+\vspace{-\baselineskip}
 %
-\section{\sweeng{programspråk}{programming}}
-\begin{tabular}{r r}
-    R       &\score{5}
-    SQL     &\score{4}
-    \LaTeX  &\score{4}
-    Python  &\score{3}
-    SAS     &\score{2}
-    C++     &\score{1}
-    %MatLab  &\score{1}
-\end{tabular}%
+\section{\sweeng{programmering}{programming}}
+%\begin{tabular}{r r}
+%    R       &\score{5}
+%    SQL     &\score{4}
+%    \LaTeX  &\score{4}
+%    Python  &\score{3}
+%    SAS     &\score{2}
+%    C++     &\score{1}
+%    %MatLab  &\score{1}
+%\end{tabular}%
 %
-\section{\sweeng{mjukvara}{software}}
-\begin{tabular}{r r}
-    Opera PMS   &\score{5}
-    Opera S\&C  &\score{5}
-    MS Excel    &\score{4}
-    PowerPoint  &\score{4}
-    QGIS        &\score{2}
-\end{tabular}%
+\foreach \x in {
+    R,
+    SQL,
+    Python,
+    \LaTeX,
+    SAS,
+    C++
+}{\langbox{\x} }
 %
-%\section{\sweeng{skills}{skills}}
-%\flushleft
-%statistical modelling, model validation, machine learning, deep learning, data visualization, results commmunication
+\section{\sweeng{tekniker}{technologies}}
+%\begin{tabular}{r r}
+%    Opera PMS   &\score{5}
+%    Opera S\&C  &\score{5}
+%    MS Excel    &\score{4}
+%    PowerPoint  &\score{4}
+%    QGIS        &\score{2}
+%\end{tabular}%
+%
+\foreach \x in {
+    GIS,
+    Spark,
+    Hadoop,
+    PyTorch,
+    GCP,
+    Tableau,
+    Git, 
+    Excel,
+    Powerpoint
+}{\techbox{\x} }
+%
+\section{\sweeng{koncept}{concepts}}
+\foreach \x in {
+    \sweeng{statistik}{statistics}, 
+    \sweeng{maskininlärning}{machine learning}, 
+    \sweeng{datavisualisering}{data visualization}, 
+    big data, 
+    \sweeng{dataanalys}{data analytics}, 
+    NLP, 
+    cloud computing
+}{\conceptbox{\x} }
+%
+\section{\sweeng{egenskaper}{qualities}}
+\foreach \x in {
+    \sweeng{projektledning}{project management}, 
+    teamwork, 
+    \sweeng{nyfiken}{curious}, 
+    \sweeng{kundfokus}{customer focus}, 
+    \sweeng{detaljerad}{detailed}, 
+    \sweeng{kommunikation}{communicative}
+}{\abilitybox{\x} }
 \end{aside}
+

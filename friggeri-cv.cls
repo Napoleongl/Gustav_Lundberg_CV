@@ -131,6 +131,7 @@ BoldItalicFont=\@cv@fontface-BoldItalic.ttf]
 {\@cv@fontface-Regular.ttf}
 \newfontfamily\thinfont[Path=fonts/\@cv@fontface/]{\@cv@fontface-Light.ttf}
 \newfontfamily\headingfont[Path=fonts/\@cv@fontface/]{\@cv@fontface-Bold.ttf}
+\newfontfamily\italfont[Path=fonts/\@cv@fontface/]{\@cv@fontface-Italic.ttf}
 
 \defaultfontfeatures{Mapping=tex-text}
 \setmainfont
@@ -157,19 +158,23 @@ BoldItalicFont=\@cv@fontface-BoldItalic.ttf
   \color{white}%
 }
 
-\newcommand{\header}[3]{%
+\newcommand{\header}[4]{%
   \begin{tikzpicture}[remember picture,overlay]
-    \node [rectangle, fill=fillheader, anchor=north, minimum width=\paperwidth, minimum height=4cm] (box) at (current page.north){};
-    \node [anchor=center] (name) at (box) {%
-      \fontsize{40pt}{72pt}\color{header}%
+    \node [rectangle, fill=fillheader, anchor=north, minimum width=\paperwidth, minimum height=6.5cm] (box) at (current page.north){};
+    \node [anchor=south] (name) at (box) {%
+      \fontsize{42pt}{72pt}\color{header}%
       {\thinfont #1}{\bodyfont  #2}
     };
-    \node [anchor=north] at (name.south) {%
-      \fontsize{14pt}{24pt}\color{header}%
+    \node [anchor=north] (worktitle) at (name.south) {%
+      \fontsize{16pt}{24pt}\color{header}%
       \thinfont #3%
     };
+    \node [anchor=north, text width=17.4cm, align=justify] (leadin) at (worktitle.south){% node added to house description in header 11/11-20
+      \fontsize{11pt}{22pt}\color{header}%
+      {\italfont \centering {#4}}%
+    };
   \end{tikzpicture}
-  \vspace{2.5cm}
+  \vspace{5cm} %org 2.5cm changed to acc description in header
   \vspace{-2\parskip}
 }
 
@@ -220,8 +225,10 @@ BoldItalicFont=\@cv@fontface-BoldItalic.ttf
 %%%%%%%%%%%%%%%%
 \newcommand{\sweeng}[2]{\ifthenelse{\equal{\swelanguage}{sv}}{#1}{#2}}
 \newcommand{\secsweeng}[2]{\ifthenelse{\equal{\swelanguage}{sv}}{\section{#1}}{\section{#2}}}
-
-#\newcommand{\testempty}[3]{\ifthenelse{\equal{#1}{}}{#2}{#3}}
+\newcommand{\skillset}[1]{\ifthenelse{\equal{#1}{}}{}{
+\multicolumn{1}{r}{\footnotesize\sweeng{Skills}{Skills}}&\parbox[t]{\tablewidth}{{\footnotesize#1}}\\}
+}
+%\newcommand{\testempty}[3]{\ifthenelse{\equal{#1}{}}{#2}{#3}}
 
 %%%%%%%%%%%%%%%%%%%%
 % List environment %
@@ -253,29 +260,29 @@ BoldItalicFont=\@cv@fontface-BoldItalic.ttf
     &\parbox{\tablewidth}{\emph{#5}\\#6}\vspace{2.5\parsep}%
   \\}
   
-\newcommand{\programmeentry}[6]{%
+\newcommand{\programmeentry}[7]{%
   \textbf{#1} &\parbox[t]{\tablewidth}{%
     \textbf{#2}%
     \hfill%
     {\footnotesize\addfontfeature{Color=lightgray} #3}\\%
-    #4\vspace{\parsep}}\\%
+    \emph{#4}\vspace{\parsep}}\\%
   \multicolumn{1}{r}{\footnotesize \sweeng{Uppsats}{Thesis}}&\parbox[t]{\tablewidth}{#5}\\%
-  \multicolumn{1}{r}{\footnotesize \sweeng{Kurser}{Coursework}}&\parbox[t]{\tablewidth}{{\footnotesize#6}%
-  \vspace{2.5\parsep}}\\}
+  \multicolumn{1}{r}{\footnotesize \sweeng{Kurser}{Coursework}}&\parbox[t]{\tablewidth}{{\footnotesize#6}}\\%
+  %\skillset{#7}
+  \vspace{0.5\parsep}\\}
   
   \newcommand{\courseentry}[5]{%
   \textbf{#1} &\parbox[t]{\tablewidth}{%
     \textbf{#2}%
     \hfill%
     {\footnotesize\addfontfeature{Color=lightgray} #3}\\%
-    #4}\\%
+    \emph{#4}}\\%
   \multicolumn{1}{r}{\footnotesize \sweeng{}{}}&\parbox[t]{\tablewidth}{{\footnotesize#5}%
   \vspace{2.5\parsep}}\\}
 
 %%%%%%%%%%%%%%
 % Side block %
 %%%%%%%%%%%%%%
-
 \RequirePackage[absolute,overlay]{textpos}
 \setlength{\TPHorizModule}{1cm}
 \setlength{\TPVertModule}{1cm}
@@ -293,6 +300,13 @@ BoldItalicFont=\@cv@fontface-BoldItalic.ttf
   \end{textblock}
   \let\section\oldsection
 }
+
+\usepackage{tcolorbox} %skillboxes addded 10/11 -20
+\newtcbox{skillbox}[1][viridis1]{on line,  colback=#1,colframe=viridis7, height=15pt, boxsep=3pt, left=2pt, right=2pt, top=1pt, bottom=1pt, boxrule=1pt,box align = center}
+\newcommand{\langbox}[1]{\skillbox[viridis1]{\small\addfontfeature{Color=viridis7, }{#1}}}
+\newcommand{\techbox}[1]{\skillbox[viridis2]{\small\addfontfeature{Color=viridis7}{#1}}}
+\newcommand{\conceptbox}[1]{\skillbox[viridis4]{\small\addfontfeature{Color=viridis0}{#1}}}
+\newcommand{\abilitybox}[1]{\skillbox[viridis6]{\small\addfontfeature{Color=viridis0}{#1}}}
 
 %%%%%%%%%%%%%%%%
 % Bibliography %

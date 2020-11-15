@@ -34,14 +34,22 @@
 
 \hyphenpenalty=10000
 
-\input{.head}
+\documentclass[a4paper]{friggeri-cv}
 
 \addbibresource{bibliography.bib} % Specify the bibliography file to include publications
 
 \begin{document}
 \pagecolor{bgcolor}
 
-\header{Gustav}{Lundberg}{\sweeng{Data Scientist med statistikperspektiv}{Data scientist with a statistics persective}} % Your name and current job title/field
+\header{Gustav}{Lundberg}
+{\sweeng
+    {Data Scientist med statistikperspektiv}
+    {Data scientist with a statistics persective}
+}
+{\sweeng
+{Mångårig erfarenhet av att analysera och agera på data, vana att tala inför och med personer med varierande expertis samt en bred akademisk grund inom statistik och maskininlärning ger mig möjligheter att ...}
+{}
+} % Your name and current job title/field, description added 12/11 -20
 
 %----------------------------------------------------------------------------------------
 %	SIDEBAR SECTION
@@ -97,7 +105,6 @@
 %----------------------------------------------------------------------------------------
 
 %\input{sections/references.tex}
-
 
 
 
