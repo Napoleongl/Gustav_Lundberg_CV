@@ -160,22 +160,23 @@ BoldItalicFont=\@cv@fontface-BoldItalic.ttf
 
 \newcommand{\header}[4]{%
   \begin{tikzpicture}[remember picture,overlay]
-    \node [rectangle, fill=fillheader, anchor=north, minimum width=\paperwidth, minimum height=6.5cm] (box) at (current page.north){};
-    \node [anchor=south] (name) at (box) {%
-      \fontsize{42pt}{72pt}\color{header}%
+    \node [rectangle, fill=fillheader, anchor=north, minimum width=\paperwidth, minimum height=6cm] (box) at (current page.north){};
+    \node [rectangle, fill=fillheader, anchor=north, minimum width=\paperwidth, minimum height=1cm] (filler) at (box.north){};
+    \node [anchor=north] (name) at (filler.south) {%
+      \fontsize{42pt}{0pt}\color{header}% %baselineskip changed from72pt
       {\thinfont #1}{\bodyfont  #2}
     };
     \node [anchor=north] (worktitle) at (name.south) {%
       \fontsize{16pt}{24pt}\color{header}%
       \thinfont #3%
     };
-    \node [anchor=north, text width=17.4cm, align=justify] (leadin) at (worktitle.south){% node added to house description in header 11/11-20
-      \fontsize{11pt}{22pt}\color{header}%
-      {\italfont \centering {#4}}%
+    \node [anchor=north, text width=17.4cm, align=center] (leadin) at (worktitle.south){% node added to house description in header 11/11-20
+      \fontsize{10pt}{22pt}\color{header}%
+      {\thinfont \centering {#4}}%
     };
   \end{tikzpicture}
-  \vspace{5cm} %org 2.5cm changed to acc description in header
-  \vspace{-2\parskip}
+  \vspace{4.5cm} %org 2.5cm changed to acc description in header
+  \vspace{-3\parskip}
 }
 
 
@@ -202,12 +203,12 @@ BoldItalicFont=\@cv@fontface-BoldItalic.ttf
 }
 
 \renewcommand{\section}[1]{
-  \par\vspace{\parskip}
+  \par\vspace{-0.5\parskip}
   {%
     \LARGE\headingfont\color{headercolor}%
     \@sectioncolor #1%
   }
-  \par\vspace{\parskip}
+  \par%\vspace{\parskip}
 }
 
 \renewcommand{\subsection}[1]{
@@ -234,7 +235,7 @@ BoldItalicFont=\@cv@fontface-BoldItalic.ttf
 % List environment %
 %%%%%%%%%%%%%%%%%%%%
 \usepackage{multirow, makecell}
-\newcommand{\tablewidth}{11.2cm}
+\newcommand{\tablewidth}{11.5cm}
 \setlength{\tabcolsep}{4pt}
 \newenvironment{entrylist}{%
   \begin{longtable}{@{\extracolsep{\fill}}rl}
@@ -257,7 +258,7 @@ BoldItalicFont=\@cv@fontface-BoldItalic.ttf
     \textbf{#3}%
     \hfill%
     {\footnotesize\addfontfeature{Color=lightgray}#4}}\\%
-    &\parbox{\tablewidth}{\emph{#5}\\#6}\vspace{2.5\parsep}%
+    &\parbox{\tablewidth}{\emph{#5}\\#6}\vspace{1.5\parsep}%
   \\}
   
 \newcommand{\programmeentry}[7]{%
@@ -268,8 +269,8 @@ BoldItalicFont=\@cv@fontface-BoldItalic.ttf
     \emph{#4}\vspace{\parsep}}\\%
   \multicolumn{1}{r}{\footnotesize \sweeng{Uppsats}{Thesis}}&\parbox[t]{\tablewidth}{#5}\\%
   \multicolumn{1}{r}{\footnotesize \sweeng{Kurser}{Coursework}}&\parbox[t]{\tablewidth}{{\footnotesize#6}}\\%
-  %\skillset{#7}
-  \vspace{0.5\parsep}\\}
+  \skillset{#7}
+  \vspace{0.25\parsep}\\}
   
   \newcommand{\courseentry}[5]{%
   \textbf{#1} &\parbox[t]{\tablewidth}{%
@@ -278,7 +279,7 @@ BoldItalicFont=\@cv@fontface-BoldItalic.ttf
     {\footnotesize\addfontfeature{Color=lightgray} #3}\\%
     \emph{#4}}\\%
   \multicolumn{1}{r}{\footnotesize \sweeng{}{}}&\parbox[t]{\tablewidth}{{\footnotesize#5}%
-  \vspace{2.5\parsep}}\\}
+  \vspace{1.5\parsep}}\\}
 
 %%%%%%%%%%%%%%
 % Side block %
@@ -289,7 +290,7 @@ BoldItalicFont=\@cv@fontface-BoldItalic.ttf
 \newenvironment{aside}{%
   \let\oldsection\section
   \renewcommand{\section}[1]{
-    \par\vspace{\baselineskip}{\Large\headingfont\color{headercolor} ##1}
+    \par\vspace{\baselineskip}{\large\headingfont\color{headercolor} ##1}
   }
   \begin{textblock}{4.3}(0.6, 4.33)
   \begin{flushright}
@@ -566,5 +567,5 @@ BoldItalicFont=\@cv@fontface-BoldItalic.ttf
 % Other tweaks %
 %%%%%%%%%%%%%%%%
 
-\RequirePackage[a4paper, left=6.1cm,top=2cm,right=2cm,bottom=2.5cm,nohead,nofoot]{geometry}
+\RequirePackage[a4paper, left=6cm,top=2cm,right=2cm,bottom=1.5cm,nohead,nofoot]{geometry}
 \RequirePackage[hidelinks]{hyperref}
